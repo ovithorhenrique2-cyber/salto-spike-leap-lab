@@ -31,7 +31,7 @@ const benefits = [
 
 const steps = ["Crie seu perfil.", "Escolha ou receba um programa adequado ao seu nível.", "Execute e registre seus treinos.", "Acompanhe seus resultados."];
 
-const faq = [
+const faq: [string, string][] = [
   ["Para quem é o Salto Pro?", "Para jogadores iniciantes e intermediários e atletas recreativos de quadra ou praia que querem melhorar o salto e a técnica."],
   ["Preciso ter experiência no vôlei?", "Não. No cadastro você informa seu nível e encontra programas indicados para iniciantes."],
   ["Como acompanho minha evolução?", "Você registra os treinos concluídos e suas medições de alcance. O painel mostra seu histórico e gráficos com os dados que você registrou."],
