@@ -206,6 +206,81 @@ export type Database = {
         }
         Relationships: []
       }
+      payment_requests: {
+        Row: {
+          admin_notes: string | null
+          amount_cents: number
+          confirmed_at: string | null
+          confirmed_by: string | null
+          created_at: string
+          id: string
+          payer_name: string | null
+          plan_slug: string
+          status: string
+          user_id: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          amount_cents?: number
+          confirmed_at?: string | null
+          confirmed_by?: string | null
+          created_at?: string
+          id?: string
+          payer_name?: string | null
+          plan_slug?: string
+          status?: string
+          user_id?: string
+        }
+        Update: {
+          admin_notes?: string | null
+          amount_cents?: number
+          confirmed_at?: string | null
+          confirmed_by?: string | null
+          created_at?: string
+          id?: string
+          payer_name?: string | null
+          plan_slug?: string
+          status?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      pix_config: {
+        Row: {
+          amount_cents: number
+          bank: string
+          id: number
+          key_type: string
+          pix_key: string | null
+          receiver_city: string
+          receiver_name: string
+          updated_at: string
+          verified: boolean
+        }
+        Insert: {
+          amount_cents?: number
+          bank?: string
+          id?: number
+          key_type?: string
+          pix_key?: string | null
+          receiver_city?: string
+          receiver_name?: string
+          updated_at?: string
+          verified?: boolean
+        }
+        Update: {
+          amount_cents?: number
+          bank?: string
+          id?: number
+          key_type?: string
+          pix_key?: string | null
+          receiver_city?: string
+          receiver_name?: string
+          updated_at?: string
+          verified?: boolean
+        }
+        Relationships: []
+      }
       plans: {
         Row: {
           active: boolean

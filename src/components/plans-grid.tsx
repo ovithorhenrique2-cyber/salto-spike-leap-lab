@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ErrorBox, Loading } from "@/components/brand";
 import { formatPrice } from "@/lib/format";
+import { PixCheckout } from "@/components/pix-checkout";
 import { usePlans, useSettings, useUser } from "@/lib/session";
 
 type Plan = NonNullable<ReturnType<typeof usePlans>["data"]>[number];
@@ -53,12 +54,14 @@ export function PlansGrid() {
           <DialogHeader>
             <DialogTitle>{open?.name}</DialogTitle>
             <DialogDescription>
-              {open?.slug === "coaching"
+              {open?.slug !== "premium"
                 ? "Fale diretamente com o treinador para combinar o acompanhamento."
-                : "O pagamento online ainda não está disponível. Nenhuma cobrança é feita por aqui. Fale com a equipe para contratar — o acesso é liberado manualmente após a confirmação."}
+                : "Pagamento via Pix. O acesso é liberado manualmente depois que o crédito é conferido no extrato."}
             </DialogDescription>
           </DialogHeader>
-          {contactUrl ? (
+          {open?.slug === "premium" ? (
+            <PixCheckout planSlug={open.slug} />
+          ) : contactUrl ? (
             <Button asChild variant="hero"><a href={contactUrl} target="_blank" rel="noreferrer">Solicitar contato</a></Button>
           ) : (
             <p className="rounded-lg bg-secondary p-3 text-sm text-muted-foreground">O link de contato ainda não foi configurado pelo administrador.</p>
