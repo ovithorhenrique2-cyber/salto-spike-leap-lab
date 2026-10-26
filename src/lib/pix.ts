@@ -15,7 +15,7 @@ export function formatCpf(d: string) {
   return d.replace(/\D/g, "").replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
 }
 
-function crc16(s: string) {
+export function crc16(s: string) {
   let crc = 0xffff;
   for (let i = 0; i < s.length; i++) {
     crc ^= s.charCodeAt(i) << 8;
@@ -27,7 +27,7 @@ function crc16(s: string) {
 
 const tlv = (id: string, v: string) => id + String(v.length).padStart(2, "0") + v;
 const clean = (s: string, max: number) =>
-  s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-Za-z0-9 ]/g, "").toUpperCase().slice(0, max).trim();
+  s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-Za-z0-9 ]/g, "").slice(0, max).trim();
 
 /** Static Pix "copia e cola" (BR Code / EMV) payload. */
 export function pixPayload(o: { key: string; name: string; city: string; amountCents: number; txid?: string }) {

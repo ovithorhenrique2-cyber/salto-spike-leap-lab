@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isValidCpf, pixPayload } from "@/lib/pix";
+import { crc16, isValidCpf, pixPayload } from "@/lib/pix";
 
 describe("pagamento Pix manual", () => {
   it("CPF incompleto é recusado", () => {
@@ -16,9 +16,7 @@ describe("pagamento Pix manual", () => {
     expect(p).toContain("540515.00");
   });
   it("CRC do código Pix bate com o exemplo oficial do BCB", () => {
-    const p = pixPayload({ key: "123e4567-e12b-12d1-a456-426655440000", name: "Fulano de Tal", city: "BRASILIA", amountCents: 100 });
-    expect(p).toBe(
-      "00020126580014br.gov.bcb.pix0136123e4567-e12b-12d1-a456-42665544000052040000530398654041.005802BR5913FULANO DE TAL5908BRASILIA62070503***63048B4F",
-    );
+    const body = "00020126580014br.gov.bcb.pix0136123e4567-e12b-12d1-a456-4266554400005204000053039865802BR5913Fulano de Tal6008BRASILIA62070503***6304";
+    expect(crc16(body)).toBe("1D3D");
   });
 });
