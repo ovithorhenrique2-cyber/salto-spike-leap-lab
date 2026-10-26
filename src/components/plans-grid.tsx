@@ -54,12 +54,12 @@ export function PlansGrid() {
           <DialogHeader>
             <DialogTitle>{open?.name}</DialogTitle>
             <DialogDescription>
-              {open?.slug === "coaching"
+              {open?.slug !== "premium"
                 ? "Fale diretamente com o treinador para combinar o acompanhamento."
                 : "Pagamento via Pix. O acesso é liberado manualmente depois que o crédito é conferido no extrato."}
             </DialogDescription>
           </DialogHeader>
-          {open && open.slug !== "coaching" ? (
+          {open?.slug === "premium" ? (
             <PixCheckout planSlug={open.slug} />
           ) : contactUrl ? (
             <Button asChild variant="hero"><a href={contactUrl} target="_blank" rel="noreferrer">Solicitar contato</a></Button>

@@ -15,7 +15,7 @@ export const Route = createFileRoute("/planos")({
     <PublicPage>
       <section className="mx-auto max-w-6xl px-4 py-12">
         <h1 className="text-4xl font-bold uppercase">Planos e acompanhamento</h1>
-        <p className="mt-1 mb-8 text-sm text-muted-foreground">Nenhuma cobrança é feita online por enquanto.</p>
+        <p className="mt-1 mb-8 text-sm text-muted-foreground">Premium por R$ 15,00 via Pix, com liberação após conferência manual.</p>
         <PlansGrid />
       </section>
     </PublicPage>
