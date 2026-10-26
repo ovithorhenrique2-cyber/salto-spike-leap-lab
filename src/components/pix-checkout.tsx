@@ -6,7 +6,6 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Loading } from "@/components/brand";
 import { supabase } from "@/integrations/supabase/client";
-import { formatPrice } from "@/lib/format";
 import { formatCpf, isValidCpf, pixPayload } from "@/lib/pix";
 import { useUser } from "@/lib/session";
 
@@ -51,7 +50,7 @@ export function PixCheckout({ planSlug }: { planSlug: string }) {
 
   return (
     <div className="space-y-4 text-sm">
-      <p className="font-display text-3xl font-extrabold">{formatPrice(cfg.amount_cents).replace(/\s/g, " ")},00</p>
+      <p className="font-display text-3xl font-extrabold">{(cfg.amount_cents / 100).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</p>
       <div className="rounded-lg border p-3">
         <p className="text-muted-foreground">{cfg.bank} · Chave CPF</p>
         <div className="mt-1 flex items-center justify-between gap-2">
